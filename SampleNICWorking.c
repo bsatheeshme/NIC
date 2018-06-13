@@ -2,6 +2,7 @@
 #include <linux/netdevice.h>
 #include <linux/kernel.h>
 #include <linux/etherdevice.h>
+#include <linux/version.h>
 
 struct net_device *virtualNIC;
 
@@ -44,7 +45,11 @@ static void virtual_setup(struct net_device *dev){
 }
 int virtualNIC_init_module(void) {
 	int result;
-	virtualNIC = alloc_netdev(0, "virtnC%d", NET_NAME_UNKNOWN,virtual_setup);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0) || defined(NET_NAME_USER)
+	virtualNIC = alloc_netdev(0, "virtnC%d", NET_NAME_USER,virtual_setup);
+#else
+	virtualNIC = alloc_netdev(0, "virtnC%d", virtual_setup);
+#endif
 	if((result = register_netdev(virtualNIC))) {
 		printk("virtualNIC: Error %d initalizing card ...", result);
 		return result;
