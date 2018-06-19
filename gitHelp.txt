@@ -1,0 +1,102 @@
+Check the git version
+=====================
+git --version
+
+git config --global user.name ""
+git config --global user.email ""
+
+Check git config (.gitconfig)
+============================
+git config --list
+
+git Help usage
+=============
+git help config
+
+    (or)
+
+git config --help
+
+Create New Git Repository
+=========================
+1) go to local directory
+2) git init
+3) git status
+
+Set git ignore filelist
+======================
+1) touch .gitignore <== file
+2) add below.
+       .DS_Store
+       .project
+      *.pyc
+3) git status <== git wont show modification in above files.
+
+Add new file from working to Staging area
+=========================================
+1) git add -A <== move files to Staging area
+
+Move file from Staging to working area
+=========================================
+1) git reset <fileName>
+
+
+
+git commit -m "Message"
+
+git log <== display logs
+
+Get remote repository
+
+git clone <url> <where to clone>
+
+example: git clone https://github.com .
+
+git remote -v
+
+git branch -a
+
+git pull origin master <== get others codes from Server
+
+Create Branch
+=============
+git branch calc-divide
+git checkout calc-divide <== switch to calc-divide branch
+
+git push -u origin calc-divide <== push new branch to remote server
+
+git checkout master <== move to 
+
+
+git branch --merged
+git merge calc-divide
+git push origin master
+
+delete branch
+git branch -d calc-divide
+
+git branch -a
+
+git push origin --delete calc-divide <== move branch in Remote server
+
+git log -3 <=== show logs of t
+git commit <comit_id1> <comit_id2>
+
+git show <commit_id> --none-only
+
+Edit Commit message
+===================
+git commit --amend -m "<new Message>"
+
+git rebase -i HEAD~<number>
+reword :wq
+type new message... :wq
+
+git fetch <== bring new changes into local repositiory
+git pull = git fetch + git merge <== Be carefull.
+
+
+Delete Latest commit
+====================
+git reset HEAD~
+git push origin master --force
